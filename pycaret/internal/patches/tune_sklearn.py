@@ -89,9 +89,7 @@ def get_tune_trainable():
                 self.main_estimator.set_params(**self.estimator_config)
 
         def _is_xgb(self):
-            from xgboost.sklearn import XGBModel
-
-            return isinstance(self.main_estimator.steps[-1][1], XGBModel)
+            return False
 
         def _early_stopping_partial_fit(self, i, estimator, X_train, y_train):
             """Handles early stopping on estimators that support `partial_fit`.
