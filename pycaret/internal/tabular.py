@@ -249,25 +249,11 @@ def setup(
         logger.warning("sklearn not found")
 
     try:
-        from xgboost import __version__
-
-        logger.info(f"xgboost=={__version__}")
-    except:
-        logger.warning("xgboost not found")
-
-    try:
         from lightgbm import __version__
 
         logger.info(f"lightgbm=={__version__}")
     except:
         logger.warning("lightgbm not found")
-
-    try:
-        from catboost import __version__
-
-        logger.info(f"catboost=={__version__}")
-    except:
-        logger.warning("catboost not found")
 
     try:
         from mlflow.version import VERSION
@@ -1097,6 +1083,9 @@ def setup(
 
     prep_pipe = pycaret.internal.preprocess.Preprocess_Path_One(
         train_data=train_data,
+        ml_usecase="classification"
+        if _ml_usecase == MLUsecase.CLASSIFICATION
+        else "regression",
         imputation_type=imputation_type,
         target_variable=target,
         imputation_regressor=imputation_regressor,

@@ -3484,27 +3484,12 @@ def tune_model(
             model = ExtraTreesClassifier(random_state=seed)
             full_name = "Extra Trees Classifier"
 
-        elif estimator == "xgboost":
-
-            from xgboost import XGBClassifier
-
-            model = XGBClassifier(random_state=seed, n_jobs=-1, verbosity=0)
-            full_name = "Extreme Gradient Boosting"
-
         elif estimator == "lightgbm":
 
             import lightgbm as lgb
 
             model = lgb.LGBMClassifier(random_state=seed)
             full_name = "Light Gradient Boosting Machine"
-
-        elif estimator == "catboost":
-            from catboost import CatBoostClassifier
-
-            model = CatBoostClassifier(
-                random_state=seed, silent=True
-            )  # Silent is True to suppress CatBoost iteration results
-            full_name = "CatBoost Classifier"
 
         logger.info(str(full_name) + " Imported Successfully")
 
@@ -3829,25 +3814,12 @@ def tune_model(
             model = MLPRegressor(random_state=seed)
             full_name = "MLP Regressor"
 
-        elif estimator == "xgboost":
-
-            from xgboost import XGBRegressor
-
-            model = XGBRegressor(random_state=seed, n_jobs=-1, verbosity=0)
-            full_name = "Extreme Gradient Boosting Regressor"
-
         elif estimator == "lightgbm":
 
             import lightgbm as lgb
 
             model = lgb.LGBMRegressor(random_state=seed)
             full_name = "Light Gradient Boosting Machine"
-
-        elif estimator == "catboost":
-            from catboost import CatBoostRegressor
-
-            model = CatBoostRegressor(random_state=seed, silent=True)
-            full_name = "CatBoost Regressor"
 
         logger.info(str(full_name) + " Imported Successfully")
 
